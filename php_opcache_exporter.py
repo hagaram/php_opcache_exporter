@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import re
 import time
@@ -192,14 +192,14 @@ class OpcacheCollector(object):
         r = requests.get(self._scrape_uri)
 
         if r.status_code != 200:
-            print "ERROR: status code from scrape-url is wrong (" + str(r.status_code) + ")"
+            print( "ERROR: status code from scrape-url is wrong (" + str(r.status_code) + ")")
             exit(14)
 
         text = r.text
         if len(text) > 0:
             return text
         else:
-            print "ERROR: response for scrape-url is empty"
+            print ("ERROR: response for scrape-url is empty")
             exit(13)
 
     def _request_data(self):
@@ -239,20 +239,20 @@ class OpcacheCollector(object):
         }
         response = client.request(params, content)
         if DEBUG:
-            print "params: "
-            print params
-            print "response:"
+            print ("params: ")
+            print (params)
+            print ("response:")
             print(force_text(response))
 
         if not response:
-            print "ERROR: response for fastcgi call is empty"
+            print ("ERROR: response for fastcgi call is empty")
             exit(2)
 
         response_body = "\n".join(response.split("\n")[3:])
         response_force_text = force_text(response_body)
 
         if DEBUG:
-            print "converted response:"
+            print ("converted response:")
             print(response_force_text)
 
         return response_body
