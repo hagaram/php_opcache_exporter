@@ -163,19 +163,22 @@ class OpcacheCollector(object):
                             for key2 in value:
                                 if key2 in items2:
                                     #print("The key and value are ({}) = ({})".format(key2, value[key2]))
-                                    key2_c = key.encode('ascii') + "_" + key2.encode('ascii')
+                                    #key2_c = key.encode('ascii') + "_" + key2.encode('ascii')
+                                    key2_c = key + "_" + key2
                                     metrics[key2_c].add_metric('',value[key2])
                         elif re.match('^memory_usage.*', key) is not None:
                             for key3 in value:
                                 if key3 in items3:
                                     #print("The key and value are ({}) = ({})".format(key3, value[key3]))
-                                    key3_c = key.encode('ascii') + "_" + key3.encode('ascii')
+                                    #key3_c = key.encode('ascii') + "_" + key3.encode('ascii')
+                                    key3_c = key + "_" + key3
                                     metrics[key3_c].add_metric('',value[key3])
                         elif re.match('^opcache_statistics.*', key) is not None:
                             for key4 in value:
                                 if key4 in items4:
                                     #print("The key and value are ({}) = ({})".format(key4, value[key4]))
-                                    key4_c = key.encode('ascii') + "_" + key4.encode('ascii')
+                                    #key4_c = key.encode('ascii') + "_" + key4.encode('ascii')
+                                    key4_c = key + "_" + key4
                                     metrics[key4_c].add_metric('',value[key4])
                     else:
                         metrics[key].add_metric('',value)
